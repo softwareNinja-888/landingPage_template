@@ -8,6 +8,7 @@ import { HeroDelivery } from './components/Hero/HeroDelivery'
 
 //FEATURE:
 import { Feature } from './components/Feature/Feature'
+import { Products } from './components/Feature/Product'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <HeroApp/> */}
       <HeroDelivery headline={['Get Goods','Delivered']}  ctaBtn='Offer Service'/>
       <Feature sectionName='Our Services'/>
+      <Products/>
     </>
   )
 }
