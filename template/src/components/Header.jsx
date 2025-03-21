@@ -3,10 +3,10 @@ import { MobileMenu } from './helper/MobileMenu'
 import { useNavigate } from 'react-router'
 import { useState } from 'react';
 
-export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link4',],btnName="Let's Talk"}){
+export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link4',],btnName="Let's Talk",sticky=true}){
 
 
-    const [menuOpen, setMenuOpen ] = useState()
+    const [menuOpen, setMenuOpen ] = useState(false)
 	const navigate = useNavigate()
 
 	function handleNav(path){
@@ -15,16 +15,16 @@ export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link
 
     return ( 
         <>
-			<div className="flex justify-between mx-auto md:justify-around items-center px-3 py-12 h-16 bg-primaryColor text-secondaryColor">
+			<div className={`flex justify-between mx-auto md:justify-around items-center px-3 py-12 h-16 bg-primaryColor text-secondaryColor ${sticky ? 'sticky top-0 z-50' : null}`}>
 				<div className="flex justify-center items-center gap-2 cursor-pointer" onClick={()=>{handleNav("/")}}>
 					<img src={logoImg} alt='logo' className='w-16 h-16'/>
 				</div>
 				
                 <nav className="hidden md:flex md:space-x-10 lg:space-x-20 text-sm ">
                 
-                    {links.map(link=>{
+                    {links.map((link,index)=>{
                         return (
-                            <div className=" flex gap-1.5 no-underline relative cursor-pointer text-inherit after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:w-full after:h-0.5 after:opacity-0 after:transition-opacity after:duration-300 after:ease-in-out hover:after:opacity-100 dark:hover:after:bg-secondaryColor hover:after:bg-secondaryColor text-base max-[500px]:text-xs" onClick={()=>{handleNav(`/${link}`)}}>
+                            <div key={index} className=" flex gap-1.5 no-underline relative cursor-pointer text-inherit after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:w-full after:h-0.5 after:opacity-0 after:transition-opacity after:duration-300 after:ease-in-out hover:after:opacity-100 dark:hover:after:bg-secondaryColor hover:after:bg-secondaryColor text-base max-[500px]:text-xs" onClick={()=>{handleNav(`/${link}`)}}>
                                 {link}
                             </div>
                         )
