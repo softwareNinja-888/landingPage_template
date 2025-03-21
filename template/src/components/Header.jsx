@@ -3,7 +3,7 @@ import { MobileMenu } from './helper/MobileMenu'
 import { useNavigate } from 'react-router'
 import { useState } from 'react';
 
-export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link4',],btnName="Let's Talk",sticky=true}){
+export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link4',],btnName="Let's Talk",sticky=true,lightTheme=true}){
 
 
     const [menuOpen, setMenuOpen ] = useState(false)
@@ -15,7 +15,7 @@ export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link
 
     return ( 
         <>
-			<div className={`flex justify-between mx-auto md:justify-around items-center px-3 py-12 h-16 bg-primaryColor text-secondaryColor ${sticky ? 'sticky top-0 z-50' : null}`}>
+			<div className={`flex justify-between mx-auto md:justify-around items-center px-3 py-12 h-16 ${lightTheme ? 'bg-secondaryColor text-primaryColor': 'bg-primaryColor text-secondaryColor'} ${sticky ? 'sticky top-0 z-50' : null}`}>
 				<div className="flex justify-center items-center gap-2 cursor-pointer" onClick={()=>{handleNav("/")}}>
 					<img src={logoImg} alt='logo' className='w-16 h-16'/>
 				</div>

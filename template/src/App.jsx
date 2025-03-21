@@ -1,10 +1,13 @@
 import './App.css'
+import { Hero } from './components/Hero'
+import { HeroTest } from './components/HeroTest'
 
 function App() {
 
   return (
-    <>
-      <div className="text-6xl text-center text-red-500">Hello Body</div>      
+    <>     
+      {/* <Hero headline='Headline to grab attention'  ctaBtn='Offer Service'/> */}
+      <HeroTest headline='Fitness kits that help you keep fit.' ctaBtn='Start Today'/>
     </>
   )
 }
