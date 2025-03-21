@@ -3,14 +3,22 @@ import { MobileMenu } from './helper/MobileMenu'
 import { useNavigate } from 'react-router'
 import { useState } from 'react';
 
-export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link4',],btnName="Let's Talk",sticky=true,lightTheme=true}){
+export function Header({
+    logoImg='/logo.svg',
+    links=['link1','link2','link3','link4',],
+    btnName="Let's Talk",
+    sticky=true,
+    lightTheme=true}
+){
 
+    // FOR HEADER COMPONET ALSO NEEDS MENU COMPONENT WHICH IS IN HELPER FOLDER. src/components/helper/MobileMenu.jsx
+    // ALSO REQUIRES INSTALLATION OF REACT ROUTER
 
     const [menuOpen, setMenuOpen ] = useState(false)
 	const navigate = useNavigate()
 
 	function handleNav(path){
-		navigate(path)
+		navigate(path.toLowerCase())
 	}
 
     return ( 
@@ -24,13 +32,13 @@ export function Header({logoImg='/logo.svg',links=['link1','link2','link3','link
                 
                     {links.map((link,index)=>{
                         return (
-                            <div key={index} className=" flex gap-1.5 no-underline relative cursor-pointer text-inherit after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:w-full after:h-0.5 after:opacity-0 after:transition-opacity after:duration-300 after:ease-in-out hover:after:opacity-100 dark:hover:after:bg-secondaryColor hover:after:bg-secondaryColor text-base max-[500px]:text-xs" onClick={()=>{handleNav(`/${link}`)}}>
+                            <div key={index} className={` flex gap-1.5 no-underline relative cursor-pointer text-inherit after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:w-full after:h-0.5 after:opacity-0 after:transition-opacity after:duration-300 after:ease-in-out hover:after:opacity-100 dark:hover:after:bg-primaryColor hover:after:bg-primaryColor text-base max-[500px]:text-xs`} onClick={()=>{handleNav(`/${link}`)}}>
                                 {link}
                             </div>
                         )
                     })}
                 </nav>
-                <div id="contact_Btn" className="cursor-pointer md:flex border border-secondaryColor text-secondaryColor px-10 py-2 hover:bg-secondaryColor  hover:text-primaryColor transition duration-700 ease-in-out bg-primaryColor hidden" >
+                <div id="contact_Btn" className={`cursor-pointer md:flex border px-10 py-2 hover:text-primaryColor transition duration-700 ease-in-out hidden ${lightTheme ? 'border-secondaryColor text-secondaryColor bg-primaryColor hover:border-primaryColor hover:bg-secondaryColor  hover:text-primaryColor ' : 'border-primaryColor text-primaryColor bg-secondaryColor hover:border-secondaryColor hover:bg-primaryColor  hover:text-secondaryColor '}` }>
                     {btnName}
                 </div>
 

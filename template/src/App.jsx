@@ -1,13 +1,24 @@
 import './App.css'
-import { Hero } from './components/Hero'
-import { HeroTest } from './components/HeroTest'
+
+// HERO OPTIONS:
+import { Hero } from './components/Hero/Hero'
+import { HeroGym } from './components/Hero/HeroGym'
+import { HeroApp } from './components/Hero/HeroApp'
+import { HeroDelivery } from './components/Hero/HeroDelivery'
+
+//FEATURE:
+import { Feature } from './components/Feature/Feature'
+
 
 function App() {
 
   return (
     <>     
-      {/* <Hero headline='Headline to grab attention'  ctaBtn='Offer Service'/> */}
-      <HeroTest headline='Fitness kits that help you keep fit.' ctaBtn='Start Today'/>
+      {/* <Hero headline='Headline to grab attention'  ctaBtn='Offer Service'/>
+      <HeroGym headline='Fitness kits that help you keep fit.' ctaBtn='Start Today'/>
+      <HeroApp/> */}
+      <HeroDelivery headline={['Get Goods','Delivered']}  ctaBtn='Offer Service'/>
+      <Feature sectionName='Our Services'/>
     </>
   )
 }
